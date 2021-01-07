@@ -59,7 +59,25 @@
         $(this).attr('disabled', 'disabled');
 
         addon.api.getTransactions(getQueryFromOptions(addonOptions)).then(function (response) {
-          $('#result').html('List Transactions Result:<br><code>' + JSON.stringify(response) + '</code>');
+          var str = "<table>";
+          str += "<th>symbol</th><th>trans date</th><th>settle date</th><th>action</th><th>desc</th><th>#</th><th>price</th><th>gross</th><th>commission</th><th>net</th><th>currency</th><th>account</th>"
+          for (var i=0; i<response.length;i++) {
+            str += "<tr>";
+            str += "<td>" + response[i].symbol + "</td>";
+            str += "<td>" + response[i]["date"] + "</td>";
+            str += "<td>" + response[i]["settlement-date"] + "</td>";
+            str += "<td>" + response[i]["type"] + "</td>";
+            str += "<td>" + response[i]["description"] + "</td>";
+            str += "<td>" + response[i]["quantity"] + "</td>";
+            str += "<td>-</td>";
+            str += "<td>" + response[i]["fee"] + "</td>";
+            str += "<td>-</td>";
+            str += "<td>" + response[i]["security"]["currency"] + "</td>";
+            str += "<td>" + response[i]["investment"] + "</td>";
+            str += "</tr>";
+          }
+          str += "</table>";
+          $('#result').html(str);
         }).catch(function (err) {
           $('#result').html('Error:<br><code>' + err + '</code>');
         }).finally(function () {
