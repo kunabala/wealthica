@@ -71,7 +71,7 @@ debugger;
             str += "<td>" + response[i]["type"] + "</td>";
             str += "<td>" + response[i]["description"] + "</td>";
             str += "<td>" + response[i]["quantity"] + "</td>";
-            str += "<td>" + (response[i]["quantity"] ? response[i]["currency_amount"] / response[i]["quantity"] : "") + "</td>";
+            str += "<td>" + (response[i]["quantity"] ? -1.0*response[i]["currency_amount"] / response[i]["quantity"] : "") + "</td>";
             str += "<td>" + response[i]["currency_amount"] + "</td>";
             str += "<td>" + response[i]["fee"] + "</td>";
             str += "<td>-</td>";
