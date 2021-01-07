@@ -58,7 +58,8 @@
 
       $('#getTransactions').on('click', function () {
         $(this).attr('disabled', 'disabled');
-
+debugger;
+        
         addon.api.getTransactions(getQueryFromOptions(addonOptions)).then(function (response) {
           var str = "<table>";
           str += "<th>symbol</th><th>trans date</th><th>settle date</th><th>action</th><th>desc</th><th>#</th><th>price</th><th>gross</th><th>commission</th><th>net</th><th>currency</th><th>account</th>"
